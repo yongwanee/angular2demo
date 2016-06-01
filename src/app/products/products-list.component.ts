@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../types/product';
 import { ProductDetailsComponent } from './product-details.component';
 import { FavouritesService } from '../shared/favourites.service';
@@ -13,17 +13,14 @@ import { ProductsService } from '../shared/products.service';
     providers: [FavouritesService, ProductsService]
 })
 
-export class ProductsListComponent {
+export class ProductsListComponent implements OnInit {
     title:string = "Edward's Products";
+    products:IProduct[];
     selectedProduct:IProduct;
     message:string;
     
     get favouritesNum():number {
         return this._favouritesService.favourites.size;
-    }
-    
-    get products():IProduct[] {
-        return this._productsService.getProducts();
     }
     
     onSelect(product:IProduct) {
@@ -35,8 +32,12 @@ export class ProductsListComponent {
         this.message = `Product ${product.name} was added to your favourites!`;
     }
     
-    constructor(
+    constructor (
         private _favouritesService:FavouritesService,
         private _productsService:ProductsService
-    ) { }
+    ) {}
+    
+    ngOnInit() { 
+        this.products = this._productsService.getProducts();
+    } 
 }
