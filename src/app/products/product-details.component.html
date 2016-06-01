@@ -4,5 +4,7 @@
     <p>{{product.description}}<p>
     <p>{{product.modifiedDate | date }}</p>
     {{product.price | currency:'CAD':false:'.2'}} <br> 
-    Edit Price: <input type="number" [(ngModel)]="product.price">
+    Edit Price: 
+    <input type="number" [(ngModel)]="product.price">
+    <button (click)="addToFavourites(product)">Add to favourites</button>
 </div>

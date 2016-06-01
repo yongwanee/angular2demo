@@ -14,9 +14,14 @@ export class ProductsListComponent {
     title:string = "Edward's Products";
     products:IProduct[];
     selectedProduct:IProduct;
+    message:string;
     
-    onSelect(product:IProduct){
+    onSelect(product:IProduct) {
         this.selectedProduct = product;
+    }
+    
+    newFavourite(product:IProduct) {
+        this.message = `Product ${product.name} was added to your favourites!`;
     }
     
     constructor() {

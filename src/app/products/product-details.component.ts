@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IProduct } from '../types/product';
 
 @Component({
@@ -14,6 +14,15 @@ export class ProductDetailsComponent implements OnInit {
      */
     @Input() product:IProduct; 
     
+    /**
+     * Event Emitter, that is accessible from outside the component
+     */
+    @Output() addedToFavourites = new EventEmitter<IProduct>();
+
+    addToFavourites(product:IProduct) {
+        this.addedToFavourites.emit(product);
+    }
+        
     constructor() { }
 
    /**
