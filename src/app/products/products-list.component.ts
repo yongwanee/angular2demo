@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IProduct } from '../types/product';
 import { ProductDetailsComponent } from './product-details.component';
 import { FavouritesService } from '../shared/favourites.service';
+import { ProductsService } from '../shared/products.service';
 
 @Component ({
     moduleId: module.id,
@@ -9,17 +10,20 @@ import { FavouritesService } from '../shared/favourites.service';
     templateUrl: "products-list.component.html",
     styleUrls: ["products-list.component.css"],
     directives: [ProductDetailsComponent],
-    providers: [FavouritesService]
+    providers: [FavouritesService, ProductsService]
 })
 
 export class ProductsListComponent {
     title:string = "Edward's Products";
-    products:IProduct[];
     selectedProduct:IProduct;
     message:string;
     
     get favouritesNum():number {
         return this._favouritesService.favourites.size;
+    }
+    
+    get products():IProduct[] {
+        return this._productsService.getProducts();
     }
     
     onSelect(product:IProduct) {
@@ -31,43 +35,8 @@ export class ProductsListComponent {
         this.message = `Product ${product.name} was added to your favourites!`;
     }
     
-    constructor(private _favouritesService:FavouritesService) {
-        this.products = [
-            {
-                name: 'Trek SSL 2015',
-                price: 999.9,
-                description: 'Racing bike.',
-                discontinued: false,
-                modifiedDate: new Date('2016-05-08')
-            },
-            {
-                name: 'City XT 2015',
-                price: 659.5,
-                description: 'City bike.',
-                discontinued: true,
-                modifiedDate: new Date('2016-04-09')
-            },
-            {
-                name: 'Cosmic Cobat 2015',
-                price: 499.9,
-                description: 'Great bike.',
-                discontinued: false,
-                modifiedDate: new Date('2016-07-12')
-            },
-            {
-                name: 'Hero DTB 2016',
-                price: 759,
-                description: 'Champion bike.',
-                discontinued: false,
-                modifiedDate: new Date('2016-06-10')
-            },
-            {
-                name: 'CS-WORKS 2016',
-                price: 1299.9,
-                description: 'Ultra bike.',
-                discontinued: false,
-                modifiedDate: new Date('2016-05-17')
-            }
-        ];
-    }
+    constructor(
+        private _favouritesService:FavouritesService,
+        private _productsService:ProductsService
+    ) { }
 }
