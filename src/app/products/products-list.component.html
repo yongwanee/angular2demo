@@ -1,1 +1,15 @@
-<h1>Hello Products!</h1>
+<h1>{{ title }}</h1>
+
+<ul class="products">
+    <li *ngFor="let product of products" 
+    [class.discontinued]="product.discontinued"
+    (click)="onSelect(product)" 
+    >
+        <span class="name">{{ product.name }}</span>
+        {{ product.description }}
+        <span class="price">{{ product.price | currency:'CAD':false:'.2' }}</span>
+    </li>
+</ul>
+
+<!-- bind to selected product, and give it as an input to the product details component -->
+<product-details [product]="selectedProduct"></product-details>

@@ -12,20 +12,22 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <products-list>Loading...</products-list>
-
+  <products-list>Loading...</products-list>  
   
-
+  <!-- because of shadow dom, styles from the component will not be applied here -->
+  <ul class="products"> 
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+    <li>d</li>
+  </ul>
+  
     {{#each scripts.polyfills}}<script src="{{.}}"></script>{{/each}}
     <script>
       System.import('system-config.js').then(function () {
         System.import('main');
       }).catch(console.error.bind(console));
     </script>
-
-  
-
-
 
 </body>
 </html>

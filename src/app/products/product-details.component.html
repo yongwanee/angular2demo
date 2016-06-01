@@ -1,0 +1,6 @@
+<!-- ngif needed, so that the initial undefined object will not be referenced -->
+<div *ngIf="product">
+    <h2>{{product.name}}</h2>
+    <p>{{product.description}}<p>
+    {{product.price | currency:'CAD':false:'.2'}}
+</div>
