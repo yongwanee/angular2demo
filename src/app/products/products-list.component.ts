@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { IProduct } from '../types/product';
 import { ProductDetailsComponent } from './product-details.component';
+import { FavouritesService } from '../shared/favourites.service';
 
 @Component ({
     moduleId: module.id,
     selector: "products-list",
     templateUrl: "products-list.component.html",
     styleUrls: ["products-list.component.css"],
-    directives: [ProductDetailsComponent]
+    directives: [ProductDetailsComponent],
+    providers: [FavouritesService]
 })
 
 export class ProductsListComponent {
@@ -16,15 +18,20 @@ export class ProductsListComponent {
     selectedProduct:IProduct;
     message:string;
     
+    get favouritesNum():number {
+        return this._favouritesService.favourites.size;
+    }
+    
     onSelect(product:IProduct) {
         this.selectedProduct = product;
     }
     
     newFavourite(product:IProduct) {
+        this._favouritesService.addToFavourites(product);
         this.message = `Product ${product.name} was added to your favourites!`;
     }
     
-    constructor() {
+    constructor(private _favouritesService:FavouritesService) {
         this.products = [
             {
                 name: 'Trek SSL 2015',
