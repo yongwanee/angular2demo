@@ -3,6 +3,7 @@ import { IProduct } from '../types/product';
 import { ProductDetailsComponent } from './product-details.component';
 import { FavouritesService, ProductsService } from '../shared/';
 import { OrderBy } from '../shared/orderBy.pipe';
+import { Router } from '@angular/router';
 
 @Component ({
     moduleId: module.id,
@@ -10,7 +11,6 @@ import { OrderBy } from '../shared/orderBy.pipe';
     templateUrl: "products-list.component.html",
     styleUrls: ["products-list.component.css"],
     directives: [ProductDetailsComponent],
-    providers: [FavouritesService, ProductsService],
     pipes: [OrderBy]
 })
 
@@ -41,8 +41,12 @@ export class ProductsListComponent implements OnInit {
         }
     }
     
-    onSelect(product:IProduct) {
-        this.selectedProduct = product;
+    onSelect(product:IProduct, isNavigate:boolean) {
+        if( isNavigate ) {
+            this._routerService.navigate(['products', product.id])
+        } else {
+            this.selectedProduct = product;
+        }
     }
     
     newFavourite(product:IProduct) {
@@ -52,7 +56,8 @@ export class ProductsListComponent implements OnInit {
     
     constructor (
         private _favouritesService:FavouritesService,
-        private _productsService:ProductsService
+        private _productsService:ProductsService,
+        private _routerService:Router
     ) {}
     
     loadProducts() {

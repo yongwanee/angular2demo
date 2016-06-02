@@ -23,16 +23,7 @@
         "selector": "product-details"
       }
     ],
-    "providers": [
-      {
-        "name": "FavouritesService",
-        "label": ""
-      },
-      {
-        "name": "ProductsService",
-        "label": ""
-      }
-    ],
+    "providers": [],
     "templateUrl": [
       "products-list.component.html"
     ],
@@ -49,6 +40,29 @@
     "templateUrl": [
       "contact.component.html"
     ],
+    "styleUrls": []
+  },
+  {
+    "name": "ProductsComponent",
+    "label": "",
+    "file": "app/products/products.ts",
+    "directives": [
+      {
+        "name": "ROUTER_DIRECTIVES",
+        "label": ""
+      }
+    ],
+    "providers": [
+      {
+        "name": "ProductsService",
+        "label": ""
+      },
+      {
+        "name": "FavouritesService",
+        "label": ""
+      }
+    ],
+    "templateUrl": [],
     "styleUrls": []
   },
   {

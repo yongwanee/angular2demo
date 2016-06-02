@@ -3,8 +3,8 @@
  */
 import { Component } from '@angular/core';
 import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
-import { ProductsListComponent } from './products/products-list.component';
 import { ContactComponent } from './contact/contact.component';
+import { ProductsComponent } from './products/products';
 
 @Component({
     moduleId: module.id,
@@ -13,7 +13,7 @@ import { ContactComponent } from './contact/contact.component';
     directives: [ROUTER_DIRECTIVES]
 })
 @Routes([
-    { path: '/products', component: ProductsListComponent },
+    { path: '/products', component: ProductsComponent },
     { path: '/contact', component: ContactComponent }
 ])
 export class AppComponent {}

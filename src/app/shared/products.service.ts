@@ -20,6 +20,10 @@ export class ProductsService {
             .catch(this.handleError);
     }
     
+    getProduct(id:number):IProduct {
+        return this.products.filter( x => x.id == id )[0];
+    }
+    
     handleError(err:any) {
         return Observable.throw(err.json().error || 'server error');
     }

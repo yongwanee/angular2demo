@@ -10,7 +10,7 @@
 <ul class="products">
     <li *ngFor="let product of products | orderBy: [sorter]" 
     [class.discontinued]="product.discontinued"
-    (click)="onSelect(product)" 
+    (click)="onSelect(product, true)" 
     [class.selected]="product === selectedProduct"
     >
         <span class="name">{{ product.name }}</span>
