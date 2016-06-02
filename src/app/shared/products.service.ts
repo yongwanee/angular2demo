@@ -47,18 +47,7 @@ export class ProductsService {
                 console.log(err);
             }
         );
-        /**
-        return this._http
-        .post(
-            this.apiEndPoint, 
-            JSON.stringify(newProduct), // make into string in json format
-            {
-                headers: myHeaders
-            }
-        ).map((response:Response) => {
-            return response.json();
-        })
-        */  
+        // TODO: return an observable, and redirect to the newly created product  
     }
     
     handleError(err:any) {
