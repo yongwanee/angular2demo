@@ -38,8 +38,8 @@ export class ProductsListComponent implements OnInit {
     
     loadProducts() {
         if(this._productsService.products) {
-             this.products = this._productsService.products;
-        } else {        
+             this.products = this._productsService.products; // load from the cache, if it exists
+        } else { // otherwise, call the api to get the list of products
             this._productsService
                 .getProducts()
                 .subscribe(

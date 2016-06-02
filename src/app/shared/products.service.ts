@@ -10,11 +10,11 @@ export class ProductsService {
     
     products:IProduct[];
     
-    getProducts():Observable<IProduct[]> {
+    getProducts():Observable<IProduct[]> { // return an observable that other components can subscribe to
         return this._http
             .get(this.apiEndPoint)
-            .map((response:Response) => { 
-                this.products = response.json();
+            .map((response:Response) => { // anonymous function so populate the basic local cache
+                this.products = response.json(); 
                 return this.products;
             })
             .catch(this.handleError);
