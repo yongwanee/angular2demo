@@ -8,7 +8,8 @@ import { ProductsService, FavouritesService } from '../shared/';
     moduleId: module.id,
     template: '<router-outlet></router-outlet>',
     directives: [ROUTER_DIRECTIVES],
-    providers: [ProductsService, FavouritesService]
+    // move the providers higher up, so that the same instance is shared between the list and the details
+    providers: [ProductsService, FavouritesService] 
 })
 @Routes([
     { path: '/', component: ProductsListComponent },
