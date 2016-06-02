@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Control, ControlGroup, Validators, FORM_DIRECTIVES } from '@angular/common';
 import { ProductsService } from '../shared/products.service';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -15,11 +16,13 @@ export class ProductInsertComponent implements OnInit {
     
     onSubmit() {
         this._productsService.insertProduct(this.insertForm.value);
+        this._router.navigate(['products'])
     }
     
     constructor(
         private _fb:FormBuilder,
-        private _productsService:ProductsService
+        private _productsService:ProductsService,
+        private _router:Router
     ) { }
 
     ngOnInit() { 
