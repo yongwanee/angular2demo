@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../types/product';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -24,8 +24,29 @@ export class ProductsService {
         return this.products.filter( x => x.id == id )[0];
     }
     
-    insertProduct() {
+    insertProduct(newProduct:IProduct) {
+        // add the header to specify the content type
+        let myHeaders:Headers = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
         
+        newProduct.modifiedDate = new Date(); // add the required field
+        
+        this._http
+        .post(
+            this.apiEndPoint, 
+            JSON.stringify(newProduct), // make into string in json format
+            {
+                headers: myHeaders
+            }
+        ).map( x => x.json() ).
+        subscribe(
+            data => {
+                this.products.push(data);
+            },
+            err => {
+                console.log(err);
+            }
+        );
     }
     
     handleError(err:any) {

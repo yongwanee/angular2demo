@@ -14,7 +14,7 @@ export class ProductInsertComponent implements OnInit {
     description:Control;
     
     onSubmit() {
-        console.log(this.insertForm.value);
+        this._productsService.insertProduct(this.insertForm.value);
     }
     
     constructor(
