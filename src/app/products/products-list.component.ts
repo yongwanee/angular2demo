@@ -19,6 +19,7 @@ export class ProductsListComponent implements OnInit {
     products:IProduct[];
     selectedProduct:IProduct;
     message:string;
+    sorter:string = "-price";
     
     get favouritesNum():number {
         return this._favouritesService.favourites.size;
