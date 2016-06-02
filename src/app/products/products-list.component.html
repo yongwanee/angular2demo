@@ -4,6 +4,8 @@
 
 <p>{{ favouritesNum }} product(s) in favourites.</p>
 
+<button (click)="sortList('price')">Sort by Price</button>
+
 <ul class="products">
     <li *ngFor="let product of products | orderBy: [sorter]" 
     [class.discontinued]="product.discontinued"

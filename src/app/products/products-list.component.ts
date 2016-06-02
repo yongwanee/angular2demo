@@ -19,10 +19,23 @@ export class ProductsListComponent implements OnInit {
     products:IProduct[];
     selectedProduct:IProduct;
     message:string;
-    sorter:string = "-price";
+    sorter:string = "name";
     
     get favouritesNum():number {
         return this._favouritesService.favourites.size;
+    }
+    
+    sortList(propertyName:string) {
+        if( this.sorter != propertyName) {
+            this.sorter = propertyName;
+            return;
+        }
+        
+        if(this.sorter.charAt(0)==='-') {
+            this.sorter = this.sorter.substr(1);
+        } else {
+            this.sorter = '-' + this.sorter;
+        }
     }
     
     onSelect(product:IProduct) {
