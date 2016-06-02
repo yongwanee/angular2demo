@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../types/product';
 import { ProductDetailsComponent } from './product-details.component';
-import { FavouritesService } from '../shared/favourites.service';
-import { ProductsService } from '../shared/products.service';
+import { FavouritesService, ProductsService } from '../shared/';
 
 @Component ({
     moduleId: module.id,
