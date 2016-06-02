@@ -8,10 +8,15 @@ import 'rxjs/Rx';
 export class ProductsService {
     apiEndPoint:string = 'http://storerestservice.azurewebsites.net/api/products/';
     
+    products:IProduct[];
+    
     getProducts():Observable<IProduct[]> {
         return this._http
             .get(this.apiEndPoint)
-            .map((response:Response) => response.json())
+            .map((response:Response) => { 
+                this.products = response.json();
+                return this.products;
+            })
             .catch(this.handleError);
     }
     

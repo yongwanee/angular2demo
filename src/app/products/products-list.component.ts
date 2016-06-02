@@ -37,12 +37,16 @@ export class ProductsListComponent implements OnInit {
     ) {}
     
     loadProducts() {
-        this._productsService
-            .getProducts()
-            .subscribe(
-                data => this.products = data,
-                error => console.log(error)
-        );
+        if(this._productsService.products) {
+             this.products = this._productsService.products;
+        } else {        
+            this._productsService
+                .getProducts()
+                .subscribe(
+                    data => this.products = data,
+                    error => console.log(error)
+            );
+        }
     }
     
     ngOnInit() { 
