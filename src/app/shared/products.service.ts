@@ -11,7 +11,7 @@ export class ProductsService {
     getProducts():Observable<IProduct[]> {
         return this._http
             .get(this.apiEndPoint)
-            .map((response:Response) => { return response.json(); })
+            .map((response:Response) => response.json())
             .catch(this.handleError);
     }
     

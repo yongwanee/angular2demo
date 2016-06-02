@@ -8,7 +8,7 @@
     <li *ngFor="let product of products" 
     [class.discontinued]="product.discontinued"
     (click)="onSelect(product)" 
-    [class.selected]="product===selectedProduct"
+    [class.selected]="product === selectedProduct"
     >
         <span class="name">{{ product.name }}</span>
         {{ product.description }}
