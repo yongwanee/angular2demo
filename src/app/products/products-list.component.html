@@ -7,6 +7,10 @@
 <button (click)="sortList('price')">Sort by Price</button>
 <button (click)="sortList('name')">Sort by Name</button>
 
+<p> 
+    <a [routerLink]="['insert']">Insert a new Product</a>
+</p>
+
 <ul class="products">
     <li *ngFor="let product of products | orderBy: [sorter]" 
     [class.discontinued]="product.discontinued"

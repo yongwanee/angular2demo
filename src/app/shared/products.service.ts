@@ -24,6 +24,10 @@ export class ProductsService {
         return this.products.filter( x => x.id == id )[0];
     }
     
+    insertProduct() {
+        
+    }
+    
     handleError(err:any) {
         return Observable.throw(err.json().error || 'server error');
     }

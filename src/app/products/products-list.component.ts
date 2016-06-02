@@ -3,14 +3,14 @@ import { IProduct } from '../types/product';
 import { ProductDetailsComponent } from './product-details.component';
 import { FavouritesService, ProductsService } from '../shared/';
 import { OrderBy } from '../shared/orderBy.pipe';
-import { Router } from '@angular/router';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component ({
     moduleId: module.id,
     selector: "products-list",
     templateUrl: "products-list.component.html",
     styleUrls: ["products-list.component.css"],
-    directives: [ProductDetailsComponent],
+    directives: [ProductDetailsComponent, ROUTER_DIRECTIVES],
     pipes: [OrderBy]
 })
 
