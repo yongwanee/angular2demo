@@ -1,0 +1,71 @@
+[
+  {
+    "selector": "product-details",
+    "name": "ProductDetailsComponent",
+    "label": "",
+    "file": "app/products/product-details.component.ts",
+    "directives": [],
+    "providers": [],
+    "templateUrl": [
+      "product-details.component.html"
+    ],
+    "styleUrls": []
+  },
+  {
+    "selector": "products-list",
+    "name": "ProductsListComponent",
+    "label": "",
+    "file": "app/products/products-list.component.ts",
+    "directives": [
+      {
+        "name": "ProductDetailsComponent",
+        "label": "",
+        "selector": "product-details"
+      }
+    ],
+    "providers": [
+      {
+        "name": "FavouritesService",
+        "label": ""
+      },
+      {
+        "name": "ProductsService",
+        "label": ""
+      }
+    ],
+    "templateUrl": [
+      "products-list.component.html"
+    ],
+    "styleUrls": [
+      "products-list.component.css"
+    ]
+  },
+  {
+    "name": "ContactComponent",
+    "label": "",
+    "file": "app/contact/contact.component.ts",
+    "directives": [],
+    "providers": [],
+    "templateUrl": [
+      "contact.component.html"
+    ],
+    "styleUrls": []
+  },
+  {
+    "selector": "store-app",
+    "name": "AppComponent",
+    "label": "",
+    "file": "src/app/app.component.ts",
+    "directives": [
+      {
+        "name": "ROUTER_DIRECTIVES",
+        "label": ""
+      }
+    ],
+    "providers": [],
+    "templateUrl": [
+      "app.component.html"
+    ],
+    "styleUrls": []
+  }
+]
