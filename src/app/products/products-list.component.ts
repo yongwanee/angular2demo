@@ -26,15 +26,10 @@ export class ProductsListComponent implements OnInit {
     }
     
     sortList(propertyName:string) {
-        if( this.sorter != propertyName) {
+        if(this.sorter.startsWith('-')) {
             this.sorter = propertyName;
-            return;
-        }
-        
-        if(this.sorter.charAt(0)==='-') {
-            this.sorter = this.sorter.substr(1);
         } else {
-            this.sorter = '-' + this.sorter;
+            this.sorter = '-' + propertyName;
         }
     }
     
