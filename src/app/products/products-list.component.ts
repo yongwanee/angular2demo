@@ -15,7 +15,7 @@ import { OrderBy } from '../shared/orderBy.pipe';
 })
 
 export class ProductsListComponent implements OnInit {
-    title:string = "Edward's Products";
+    title:string = "Products";
     products:IProduct[];
     selectedProduct:IProduct;
     message:string;
@@ -26,10 +26,18 @@ export class ProductsListComponent implements OnInit {
     }
     
     sortList(propertyName:string) {
-        if(this.sorter.startsWith('-')) { 
+        // if a new property, set a new sorter
+        if(this.sorter != propertyName )
+        {
             this.sorter = propertyName;
+            return;
+        }
+        
+        // if existing property, reverse the sort
+        if(this.sorter.startsWith('-')) { 
+            this.sorter = this.sorter;
         } else {
-            this.sorter = '-' + propertyName;
+            this.sorter = '-' + this.sorter;
         }
     }
     
