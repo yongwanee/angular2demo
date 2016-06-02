@@ -26,7 +26,7 @@ export class ProductsListComponent implements OnInit {
     }
     
     sortList(propertyName:string) {
-        if(this.sorter.startsWith('-')) {
+        if(this.sorter.startsWith('-')) { 
             this.sorter = propertyName;
         } else {
             this.sorter = '-' + propertyName;
