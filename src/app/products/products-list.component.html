@@ -5,7 +5,7 @@
 <p>{{ favouritesNum }} product(s) in favourites.</p>
 
 <ul class="products">
-    <li *ngFor="let product of products" 
+    <li *ngFor="let product of products | orderBy: ['price']" 
     [class.discontinued]="product.discontinued"
     (click)="onSelect(product)" 
     [class.selected]="product === selectedProduct"

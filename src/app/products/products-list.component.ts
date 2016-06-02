@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../types/product';
 import { ProductDetailsComponent } from './product-details.component';
 import { FavouritesService, ProductsService } from '../shared/';
+import { OrderBy } from '../shared/orderBy.pipe';
 
 @Component ({
     moduleId: module.id,
@@ -9,7 +10,8 @@ import { FavouritesService, ProductsService } from '../shared/';
     templateUrl: "products-list.component.html",
     styleUrls: ["products-list.component.css"],
     directives: [ProductDetailsComponent],
-    providers: [FavouritesService, ProductsService]
+    providers: [FavouritesService, ProductsService],
+    pipes: [OrderBy]
 })
 
 export class ProductsListComponent implements OnInit {
